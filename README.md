@@ -11,15 +11,10 @@ Download and unzip latest version from https://bitcoin.org/en/download
 	
 # Configure supervisor to run bitcoin as a service
 
+Edit the files to be copied below so the path to bitcoin config files for testnet and mainnet are correct. Then...
+
+
 	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ sudo cp dotfiles/etc/supervisor/conf.d/bitcoind* /etc/supervisor/conf.d/
-	
-Edit the files copied above so the path to bitcoind matches wherever it was installed and unzipped above.
-
-# Configure bitcoin
-
-Might want to change passwords here. Or might not matter. (Should be in security review)
-
-thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ cp dotfiles/.bitcoin/bitcoin.conf ~/.bitcoin/
 
 # Add addresses to Watch
 
