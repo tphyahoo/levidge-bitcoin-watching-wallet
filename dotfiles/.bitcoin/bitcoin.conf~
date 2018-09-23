@@ -1,0 +1,3 @@
+rpcpassword=magnumpi
+rpcallowip=127.0.0.1
+walletnotify=/home/thomas/levidgeWork/exchangewalletupdater.sh
