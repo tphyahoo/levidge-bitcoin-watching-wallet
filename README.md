@@ -11,7 +11,7 @@ Download and unzip latest version from https://bitcoin.org/en/download
 	
 # Configure supervisor to run bitcoin as a service
 
-Edit the files to be copied below so the path to bitcoin config files for testnet and mainnet are correct. Then...
+Edit the files to be copied below so the path to bitcoin executable and config files for testnet and mainnet are correct. Then...
 
 
 	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ sudo cp dotfiles/etc/supervisor/conf.d/bitcoind* /etc/supervisor/conf.d/
