@@ -5,6 +5,8 @@ watch for bitcoin deposits and withdrawals
 
 Download and unzip latest version from https://bitcoin.org/en/download
 
+Currently doing this in home directory of my (thomas) user. Trying to avoid installing sensitive software as root.
+
 # Install supervisor
 
 	$ sudo apt-get install supervisor
