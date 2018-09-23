@@ -36,4 +36,13 @@ Haven't done this yet
 
 # Configure reporting wallet transactions to levidge exchange server
 
-Haven't done this yet
+Haven't done this yet. However, note that this is controlled by the walletnotify line in the bitcoin config file. 
+
+	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ tail -n3 dotfiles/.bitcoin/bitcointestnet.conf 
+	walletnotify=/home/thomas/levidge-bitcoin-watching-wallet/exchangewalletupdaterTestnet.sh %s
+	
+	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ cat exchangewalletupdaterTestnet.sh 
+	echo getting transaction $1                                          >> /home/thomas/exchangeWalletUpdatesTestnet.txt
+	~/installs/bitcoin-0.16.2/bin/bitcoin-cli -testnet gettransaction $1 >> /home/thomas/exchangeWalletUpdatesTestnet.txt
+	
+
