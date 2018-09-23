@@ -19,12 +19,13 @@ Edit the files to be copied below so the path to bitcoin config files for testne
 # Add addresses to Watch
 
 ### Add addresseses to watch, command line (Modify and run accordingly...)
-	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ cat addBitcoindWatchingAddresses.sh 
+	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ cat addBitcoindWatchingAddressesTestnet.sh 
 	#!/bin/bash
-	# ~/installs/Electrum-3.2.2/electrum --testnet -w ~/.electrum/testnet/wallets/levidge_testnet_multisig_viewing listaddresses | jq --monochrome-output --raw-output  '.[]' | while read address
+	
+	# ~/installs/Electrum-3.2.2/electrum --testnet -w ~/.electrum/testnet/wallets/levidge_testnet_multisig_viewing 	listaddresses | jq --monochrome-output --raw-output  '.[]' | while read address
 	cat levidge_thomas_trezor_singlesig_testnet_addresses.txt | jq --monochrome-output --raw-output  '.[]' | while read address
 	do
-		~/levidgeWork/addBitcoindWatchingAddress.sh $address  
+	  ~/levidgeWork/addBitcoindWatchingAddressTestnet.sh $address  
 	done
 
 # Listen for new addresses dynamically
