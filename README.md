@@ -14,7 +14,7 @@ watch for bitcoin deposits and withdrawals
 	cat levidge_thomas_trezor_singlesig_testnet_addresses.txt | jq --monochrome-output --raw-output  '.[]' | while read address
 	do
 		~/levidgeWork/addBitcoindWatchingAddress.sh $address  
-done
+	done
 
 # Listen for new addresses dynamically
 
