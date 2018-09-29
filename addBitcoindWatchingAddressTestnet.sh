@@ -1,4 +1,5 @@
-~/installs/bitcoin-0.16.2/bin/bitcoin-cli -testnet  importmulti "
+source levidge-bitcoin-watching-wallet.env
+bitcoin-cli -conf=/home/thomas/levidge-bitcoin-watching-wallet/dotfiles/.bitcoin/bitcointestnet.conf -testnet  importmulti "
   [
     {
       \"scriptPubKey\" : { \"address\": \"$1\" },
