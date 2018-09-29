@@ -5,7 +5,7 @@ watch for bitcoin deposits and withdrawals
 
 Download and unzip latest version from https://bitcoin.org/en/download
 
-Currently doing this in home directory of my (thomas) user. Trying to avoid installing sensitive software as root.
+Currently doing this in home directory of my (thomas) user. Trying to avoid installing software as root.
 
 # Install supervisor
 
@@ -22,6 +22,13 @@ Edit the files to be copied below so the path to bitcoin executable and config f
 
 ### Add addresseses to watch, command line (Modify and run accordingly...)
 	levidge-sh1:~/levidge-bitcoin-watching-wallet$ ./addBitcoindWatchingAddressesTestnet.sh 
+
+This is flaky now. Generally to get it to work on a new box I tar.gz and copy over a working ~/.bitcoin dir from an existing server.
+
+I believe that it would also work if I ran this script at start time, before downloading blocks. 
+
+I believe there is also a way to get it to work on an empty wallet after downloading blocks, by using -reindex flag. 
+Needs more testing.
 
 # Listen for new addresses dynamically
 
