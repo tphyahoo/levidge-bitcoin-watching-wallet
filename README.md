@@ -16,12 +16,12 @@ Currently doing this in home directory of my (thomas) user. Trying to avoid inst
 Edit the files to be copied below so the path to bitcoin executable and config files for testnet and mainnet are correct. Then...
 
 
-	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ sudo cp dotfiles/etc/supervisor/conf.d/bitcoind* /etc/supervisor/conf.d/
+	levidge-do1:~/levidge-bitcoin-watching-wallet$ sudo cp dotfiles/etc/supervisor/conf.d/bitcoind* /etc/supervisor/conf.d/
 
 # Add addresses to Watch
 
 ### Add addresseses to watch, command line (Modify and run accordingly...)
-	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ cat addBitcoindWatchingAddressesTestnet.sh 
+	levidge-do1:~/levidge-bitcoin-watching-wallet$ cat addBitcoindWatchingAddressesTestnet.sh 
 	#!/bin/bash
 	
 	# ~/installs/Electrum-3.2.2/electrum --testnet -w ~/.electrum/testnet/wallets/levidge_testnet_multisig_viewing 	listaddresses | jq --monochrome-output --raw-output  '.[]' | while read address
@@ -38,7 +38,7 @@ Haven't done this yet
 
 Haven't done this yet. However, note that this is controlled by the walletnotify line in the bitcoin config file. 
 
-	thomas@levidge-do1:~/levidge-bitcoin-watching-wallet$ tail -n3 dotfiles/.bitcoin/bitcointestnet.conf 
+	levidge-do1:~/levidge-bitcoin-watching-wallet$ tail -n3 dotfiles/.bitcoin/bitcointestnet.conf 
 	walletnotify=/home/thomas/levidge-bitcoin-watching-wallet/exchangewalletupdaterTestnet.sh %s >> /home/thomas/exchangeWalletUpdatesTestnet.txt
 	
 	
