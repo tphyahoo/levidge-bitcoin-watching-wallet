@@ -1,1 +1,2 @@
-~/installs/bitcoin-0.16.2/bin/bitcoin-cli -testnet listreceivedbyaddress 0 false true
+source levidge-bitcoin-watching-wallet.env
+bitcoin-cli -conf=/home/thomas/levidge-bitcoin-watching-wallet/dotfiles/.bitcoin/bitcointestnet.conf -testnet listreceivedbyaddress 0 false true
