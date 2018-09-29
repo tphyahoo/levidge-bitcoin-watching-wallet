@@ -23,7 +23,7 @@ Edit the files to be copied below so the path to bitcoin executable and config f
 ### Add addresseses to watch, command line (Modify and run accordingly...)
 	levidge-sh1:~/levidge-bitcoin-watching-wallet$ ./addBitcoindWatchingAddressesTestnet.sh 
 
-This is flaky now. Generally to get it to work on a new box I tar.gz a working ~/.bitcoin dir from an existing server.
+This is flaky now. Generally to get it to work on a new box I tar.gz and copy over a working ~/.bitcoin dir from an existing server.
 
 I believe that it would also work if I ran this script at start time, before downloading blocks. 
 
