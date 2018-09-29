@@ -5,7 +5,7 @@ watch for bitcoin deposits and withdrawals
 
 Download and unzip latest version from https://bitcoin.org/en/download
 
-Currently doing this in home directory of my (thomas) user. Trying to avoid installing sensitive software as root.
+Currently doing this in home directory of my (thomas) user. Trying to avoid installing ssoftware as root.
 
 # Install supervisor
 
