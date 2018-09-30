@@ -5,7 +5,9 @@ watch for bitcoin deposits and withdrawals
 
 Download and unzip latest version from https://bitcoin.org/en/download
 
-Currently doing this in home directory of my (thomas) user. Trying to avoid installing software as root.
+Copy them somewhere they are executable system wide
+
+levidge-sh1:~/installs/bitcoin-0.16.3/bin$ sudo cp * /usr/bin/
 
 # Install supervisor
 
