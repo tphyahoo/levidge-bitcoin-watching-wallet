@@ -1,4 +1,4 @@
-#!/bin/bash -uexS
+#!/bin/bash -uex
 date
 echo posix time: `date +%s`
 echo getting transaction $1
