@@ -1,0 +1,1 @@
+CONFIRMING_TRANSACTIONS_FILE=confirmingTransactions.txt
