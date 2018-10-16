@@ -1,8 +1,8 @@
 #!/bin/bash -uex
 
-. env.sh
+. envTestnet.sh
 
 txid=$1
 
-echo $txid >> allTransactionsBackup.txt
+echo $txid >> $ALL_TRANSACTIONS_FILE
 echo $txid >> $CONFIRMING_TRANSACTIONS_FILE

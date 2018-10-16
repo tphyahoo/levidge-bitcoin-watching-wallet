@@ -1,0 +1,4 @@
+CONFIRMING_TRANSACTIONS_FILE=confirmingTransactionsTestnet.txt
+ALL_TRANSACTIONS_FILE=allTransactionsBackupTestnet.txt
+MAX_CONFIRMATIONS=6
+
