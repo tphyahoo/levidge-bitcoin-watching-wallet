@@ -6,6 +6,9 @@ We keep a list of txids that need to be checked.
 Txids are added to the confirmingTransactions file by a shell script called by walletnotify mechanism of bitcoind.
 See bitcoin config file walletnotify line for this command.
 
+	levidge-do1:~/levidge-bitcoin-watching-wallet$ tail -n3 dotfiles/.bitcoin/bitcointestnet.conf 
+	walletnotify=cd /home/thomas/levidge-bitcoin-watching-wallet ; ./addConfirmingTransactionTestnet.sh %s
+
 handleConfirmingTransactions runs demonized under supervisor:
 * watches the confirmingTransactionsFile
 * does necessary parsing for confirming transactions
@@ -63,11 +66,6 @@ Needs more testing.
 
 Haven't done this yet
 
-# Configure reporting wallet transactions to levidge exchange server
 
-Haven't done this yet. However, note that this is controlled by the walletnotify line in the bitcoin config file. 
-
-	levidge-do1:~/levidge-bitcoin-watching-wallet$ tail -n3 dotfiles/.bitcoin/bitcointestnet.conf 
-	walletnotify=/home/thomas/levidge-bitcoin-watching-wallet/exchangewalletupdaterTestnet.sh %s >> /home/thomas/exchangeWalletUpdatesTestnet.txt
 	
 	
