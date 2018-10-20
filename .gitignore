@@ -4,3 +4,7 @@
 
 allTransactionsBackupTestnet.txt
 confirmingTransactionsTestnet.txt
+*.bak
+*.hi
+*.o
+handleConfirmingTransactionsTestnet
