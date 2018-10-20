@@ -29,17 +29,17 @@ NodeClient is in a separate repo for now.
 	cabal install safe 
 	# for parsing json. Todo, remove need to use this command line utility and parse natively using aeson or similar lib.
 	apt-get install jq 
-	$ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
+	$ ghc --make handleConfirmingTransactions.hs # creates handleConfirmingTransactions executable
+
+# Install handleConfirmingTransactions supervisor config files 
+
+	$ sudo cp dotfiles/etc/supervisor/conf.d/handleConfirmingTransactionsTestnet* /etc/supervisor/conf.d
 
 # Install NodeClient
 
 Not currently well packaged. Just a tar.gz file with a lot of binaries. 
 
 Also requires apt installing a java related library, but I don't remember which one. (todo)
-
-# Install handleConfirmingTransactions supervisor config files 
-
-	$ sudo cp dotfiles/etc/supervisor/conf.d/handleConfirmingTransactionsTestnet* /etc/supervisor/conf.d
 
 # Install NodeClient supervisor config files 
 
