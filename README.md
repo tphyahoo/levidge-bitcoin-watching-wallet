@@ -15,7 +15,7 @@ handleConfirmingTransactions runs demonized under supervisor:
 Another process, NodeClient, also daemonized under supervisor, watches the transactions csv file and communicates deposits and withdrawals to the levidge server.
 NodeClient is in a separate repo for now.
 
-# Install handleConfirmingTransactionsTestnet 
+# Install handleConfirmingTransactions 
 
 apt-get install ghc
 apt-get install cabal-install
@@ -26,7 +26,7 @@ apt-get install jq # for parsing json. Todo, remove need to use this command lin
 
 $ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
 
-# Install handleConfirmingTransactionsTestnet supervisor (todo)
+# Install handleConfirmingTransactions supervisor config files (todo)
 
 # Install bitccoin
 
