@@ -18,18 +18,28 @@ handleConfirmingTransactions runs demonized under supervisor:
 Another process, NodeClient, also daemonized under supervisor, watches the transactions csv file and communicates deposits and withdrawals to the levidge server.
 NodeClient is in a separate repo for now.
 
+# Install supervisor
+
+	$ sudo apt-get install supervisor
+
 # Install handleConfirmingTransactions 
 
-apt-get install ghc
-apt-get install cabal-install
-cabal install safe 
+	apt-get install ghc
+	apt-get install cabal-install
+	cabal install safe 
+	# for parsing json. Todo, remove need to use this command line utility and parse natively using aeson or similar lib.
+	apt-get install jq 
+	$ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
 
-apt-get install jq # for parsing json. Todo, remove need to use this command line utility and parse natively using aeson or similar lib.
+# Install handleConfirmingTransactions supervisor config files 
 
+	$ sudo cp dotfiles/etc/supervisor/conf.d/handleConfirmingTransactionsTestnet* /etc/supervisor/conf.d
 
-$ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
+# Install NodeClient supervisor config files 
 
-# Install handleConfirmingTransactions supervisor config files (todo)
+	sudo cp dotfiles/etc/supervisor/conf.d/btcwatcher.conf /etc/supervisor/conf.d/
+
+Todo: Naming here is confusing. Could use some cleanup. 
 
 # Install bitccoin
 
@@ -38,10 +48,6 @@ Download and unzip latest version from https://bitcoin.org/en/download
 Copy them somewhere they are executable system wide
 
 levidge-sh1:~/installs/bitcoin-0.16.3/bin$ sudo cp * /usr/bin/
-
-# Install supervisor
-
-	$ sudo apt-get install supervisor
 	
 # Configure supervisor to run bitcoin as a service
 
