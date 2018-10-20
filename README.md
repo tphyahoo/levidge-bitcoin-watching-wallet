@@ -31,6 +31,12 @@ NodeClient is in a separate repo for now.
 	apt-get install jq 
 	$ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
 
+# Install NodeClient
+
+Not currently well packaged. Just a tar.gz file with a lot of binaries. 
+
+Also requires apt installing a java related library, but I don't remember which one. (todo)
+
 # Install handleConfirmingTransactions supervisor config files 
 
 	$ sudo cp dotfiles/etc/supervisor/conf.d/handleConfirmingTransactionsTestnet* /etc/supervisor/conf.d
