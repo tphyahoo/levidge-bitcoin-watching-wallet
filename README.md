@@ -1,13 +1,24 @@
-
-
 # levidge-bitcoin-watching-wallet
 watch for bitcoin deposits and withdrawals
+
+We keep a list of txids that need to be checked. Txids are added to the confirmingTransactions file by a shell script called by walletnotify mechanism of bitcoind.
+See bitcoin config file walletnotify line for this command.
+handleConfirmingTransactions runs demonized under supervisor:
+  watches the confirmingTransactionsFile
+  does necessary parsing for confirming transactions
+  writes a transactions csv file with deposits and withdrawals 
+  deletes txids from the confirmingTransactions file.
+Another process, NodeClient, also daemonized under supervisor, watches the transactions csv file and communicates deposits and withdrawals to the levidge server.
+NodeClient is in a separate repo for now.
 
 # Install handleConfirmingTransactionsTestnet 
 
 apt-get install ghc
 apt-get install cabal-install
-apt-get install jq
+cabal install safe 
+
+apt-get install jq # for parsing json. Todo, remove need to use this command line utility and parse natively using aeson or similar lib.
+
 
 $ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
 

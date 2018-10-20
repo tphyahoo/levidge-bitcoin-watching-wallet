@@ -5,24 +5,32 @@ import GHC.IO.Exception ( ExitCode (..) )
 import System.FilePath ( (</>) )
 import System.Environment (getArgs)
 import System.Directory (getHomeDirectory)
+import Control.Concurrent (threadDelay)
 import Data.List (intersperse)
 import Data.Int (Int64)
 import Text.Printf (printf)
+import Safe (readMay)
 
 main = program 
 
+-- see handleConfirmingTransactionsTestnet.sh for usage infos
 program = do
   args <- getArgs
   case args of
-    [ transactionsCsvFile, confirmingTransactionsFile ] -> do
+    [ btcConfigFile, transactionsCsvFile, confirmingTransactionsFile, userId, strInstrumentId, symbol ] -> do
       currentdir <- pure chomp <*> readProcess "pwd" [] "" 
-      let configFile = currentdir </> "dotfiles/.bitcoin/bitcointestnet.conf"
-      (transactionsCsvFile :: String) <- pure (</> "exchange_transactions.csv") <*> getHomeDirectory
-      forever $ do
-          let confirmingTransactionsFile = "confirmingTransactionsTestnet.txt"
-          txids <- (pure lines) <*> (readFile confirmingTransactionsFile)
-          forM_ txids $ \txid -> handleTransaction configFile transactionsCsvFile confirmingTransactionsFile txid
-    badArgs -> error $ "handleConfirmingTransactionsTestnet, bad args. Usage is    handleConfirmingTransactionsTestnet transactionsCsvFile confirmingTransactionsFile"
+      -- let configFile = currentdir </> "dotfiles/.bitcoin/bitcointestnet.conf"
+      let mbId = readMay strInstrumentId
+      case mbId of
+          Nothing -> putStrLn $ "stInstrumentId parse probm: " ++ strInstrumentId
+          Just instrumentId -> do
+          forever $ do
+              let confirmingTransactionsFile = "confirmingTransactionsTestnet.txt"
+              txids <- (pure lines) <*> (readFile confirmingTransactionsFile)
+              forM_ txids $ \txid -> handleTransaction btcConfigFile transactionsCsvFile confirmingTransactionsFile  userId instrumentId symbol txid
+              let waitMicroseconds = 1000000
+              threadDelay waitMicroseconds
+    badArgs -> error $ "handleConfirmingTransactionsTestnet, bad args. Usage is    handleConfirmingTransactionsTestnet btcConfigFile transactionsCsvFile confirmingTransactionsFile userId instrumentId symbol"
 
 
 maxConfirms :: Integer
@@ -31,12 +39,12 @@ maxConfirms = 6 -- todo, make config file var
 -- todo, use something safe instead of read
 -- todo, review for other unsafe methods
 
-handleTransaction :: FilePath -> FilePath -> FilePath -> String -> IO ()
-handleTransaction configFile transactionsCsvFile confirmingTransactionsFile txid = do
-  let userId = "Not sure what Userid"
+handleTransaction :: FilePath -> FilePath -> FilePath -> String -> Integer -> String -> String -> IO ()
+handleTransaction configFile transactionsCsvFile confirmingTransactionsFile userId instrumentId symbol txid = do
+  {- let userId = "Not sure what Userid"
       instrumentId :: Integer
-      instrumentId = 3 -- from https://levidge.com/api/getInstruments      
-      symbol = "BTC"
+      instrumentId = 3 
+      symbol = "BTC" -}
   mbTxJson <- bitcoinCli configFile ["gettransaction", txid]
   case mbTxJson of
     Nothing -> putStrLn $ "error with gettransaction for " ++ txid
@@ -148,7 +156,8 @@ t1 = tFunc "58dea6e73f4f1d6fa4fe499bc497de352ac9faf95c9dd6b0efe43a19765e741f"
 t2 = tFunc "dee6e5ea348b370081e7c86d1c09a958546cfd51188ec969dd1c31cf9d7b0218"
 t3 = putStrLn "arrrggg"
 
-tFunc = handleTransaction ( "/home/thomas/levidge-bitcoin-watching-wallet/dotfiles/.bitcoin/bitcointestnet.conf" ) "/home/thomas/watchers/btc/transactions.csv" "confirmingTransactionsTestnet.txt"
+tFunc :: String -> IO ()
+tFunc = handleTransaction ( "/home/thomas/levidge-bitcoin-watching-wallet/dotfiles/.bitcoin/bitcointestnet.conf" ) "/home/thomas/watchers/btc/transactions.csv" "confirmingTransactionsTestnet.txt" "not sure" 6 "BTCTEST"
 
 
 {-
