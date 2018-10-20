@@ -1,5 +1,17 @@
+
+
 # levidge-bitcoin-watching-wallet
 watch for bitcoin deposits and withdrawals
+
+# Install handleConfirmingTransactionsTestnet 
+
+apt-get install ghc
+apt-get install cabal-install
+apt-get install jq
+
+$ ghc --make handleConfirmingTransactionsTestnet.hs # creates handleConfirmingTransactionsTestnet executable
+
+# Install handleConfirmingTransactionsTestnet supervisor (todo)
 
 # Install bitccoin
 
