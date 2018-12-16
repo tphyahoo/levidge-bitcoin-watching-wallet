@@ -1,3 +1,9 @@
+# historical note
+
+This repo is not in use and I am not involved in the project anymore.
+
+I have made it public in case it might be useful to anyone (including myelf).
+
 # levidge-bitcoin-watching-wallet
 watch for bitcoin deposits and withdrawals
 
